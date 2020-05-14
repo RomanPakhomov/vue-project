@@ -1,0 +1,27 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "server": "node src/app.js",
+    "check-db": "node src/services/db/db.service.js",
+    "check-dal": "node src/blog/dal/blog.dal.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "camelcase-keys": "^6.2.2",
+    "cors": "^2.8.5",
+    "expand-template": "^2.0.3",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "mysql2": "^2.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}
