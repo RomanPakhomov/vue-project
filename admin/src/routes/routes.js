@@ -1,21 +1,22 @@
-import Admin from '../components/Admin.vue';
-
+import Blog from '../pages/Blog.vue';
 import BlogList from '../components/blog/BlogList.vue';
 import BlogArticle from '../components/blog/BlogArticle.vue';
-import NewBlogArticle from '../components/blog/NewBlogArticle.vue';
 
+import Categories from '../pages/Categories.vue';
 import CategoryList from '../components/categories/CategoryList.vue';
 import Category from '../components/categories/Category.vue';
 
+import Products from '../pages/Products.vue';
 import ProductList from '../components/products/ProductList.vue';
 import Product from '../components/products/Product.vue';
 
+import Promo from '../pages/Promo.vue';
 import PromoList from '../components/promo/PromoList.vue';
 import PromoArticle from '../components/promo/PromoArticle.vue';
 
-import Login from '../components/Login.vue';
-import Dashboard from '../components/Dashboard.vue';
-import Orders from '../components/Orders.vue';
+import Login from '../pages/Login.vue';
+import Dashboard from '../pages/Dashboard.vue';
+import Orders from '../pages/Orders.vue';
 
 export const routes = [
   {
@@ -23,69 +24,83 @@ export const routes = [
     component: Login
   },
   {
-    path: '/',
-    component: Admin,
+    path: '/main',
+    alias: '',
+    component: Dashboard,
+    meta: { title: 'Панель администратора' }
+  },
+  {
+    path: '/orders',
+    component: Orders,
+    meta: { title: 'Заявки' }
+  },
+  {
+    path: '/blog',
+    component: Blog,
     children: [
       {
-        path: 'main',
-        alias: '',
-        component: Dashboard,
-        meta: { title: 'Панель администратора' }
-      },
-      {
-        path: 'orders',
-        component: Orders,
-        meta: { title: 'Заявки' }
-      },
-      {
-        path: 'blog',
+        path: '',
         component: BlogList,
-        children: [
-          {
-            path: 'new',
-            component: NewBlogArticle,
-            meta: { title: 'Добавление новой записи'}
-          },
-          {
-            path: ':id/',
-            component: BlogArticle,
-            meta: { title: 'Редактирование записи' }
-          }
-        ]
+        meta: { title: 'Блог' }
       },
       {
-        path: 'categories',
+        path: 'new',
+        component: BlogArticle,
+        meta: { title: 'Блог'}
+      },
+      {
+        path: ':id/',
+        component: BlogArticle,
+        meta: { title: 'Блог' }
+      }
+    ]
+  },
+  {
+    path: '/categories',
+    component: Categories,
+    children: [
+      {
+        path: '',
         component: CategoryList,
-        children: [
-          {
-            path: ':id/',
-            component: Category,
-            meta: { title: 'Редактирование категории' }
-          }
-        ]
+        meta: { title: 'Список категорий' }
       },
       {
-        path: 'products',
+        path: ':id/',
+        component: Category,
+        meta: { title: 'Редактирование категории' }
+      }
+    ]
+  },
+  {
+    path: '/products',
+    component: Products,
+    children: [
+      {
+        path: '',
         component: ProductList,
-        children: [
-          {
-            path: ':id/',
-            component: Product,
-            meta: { title: 'Редактирование продуктов' }
-          }
-        ]
+        meta: { title: 'Список продуктов' }
       },
       {
-        path: 'promo',
+        path: ':id/',
+        component: Product,
+        meta: { title: 'Редактирование продуктов' }
+      }
+    ]
+  },
+  {
+    path: '/promo',
+    component: Promo,
+    children: [
+      {
+        path: '',
         component: PromoList,
-        children: [
-          {
-            path: ':id/',
-            component: PromoArticle,
-            meta: { title: 'Редактирование акции' }
-          }
-        ]
+        meta: { title: 'Список акций' }
+      },
+      {
+        path: ':id/',
+        component: PromoArticle,
+        meta: { title: 'Редактирование акции' }
       }
     ]
   }
-]
+];

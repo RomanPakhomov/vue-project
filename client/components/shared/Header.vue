@@ -21,7 +21,7 @@
           router-link.nav-link(
             v-bind:to="`${link.url}`"
           ) {{ link.title }}
-    router-link.navbar-brand( to="/" v-bind:style="`background-image:url(/public/images/logo.png)`")
+    router-link.navbar-brand( to="/" v-bind:style="`background-image:url(http://localhost:4000/img/logo.png)`")
     form.form-inline.my-2.my-lg-0
       font-awesome-icon(icon="search")
       input.form-control.mr-sm-2(type='text', placeholder='Поиск')

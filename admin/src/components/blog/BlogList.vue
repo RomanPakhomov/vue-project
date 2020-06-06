@@ -18,14 +18,16 @@
             tr(v-for="item, index in articles" :key="item.id")
               td {{ index }}
               td {{ item.title }}
-              td {{ item.date }}
+              td {{ item.date.slice(0,10) }}
               td {{ item.status }}
               td 
-                router-link(:to="`/${item.index}`")
+                router-link(:to="`/blog/${item.id}`")
+                  BIconPencilSquare
 </template>
 
 <script>
 import axios from 'axios';
+import { BIconPencilSquare } from 'bootstrap-vue';
 
 export default {
   name: 'BlogList',
@@ -35,9 +37,12 @@ export default {
   }),
   mounted() {
     axios
-      .get('http://localhost:3000/blog/')
+      .get('http://localhost:4000/blog/')
       .then(res => this.articles = res.data)
       .catch(err => console.log(err))
+  },
+  components: {
+    BIconPencilSquare
   }
 }
 </script>
